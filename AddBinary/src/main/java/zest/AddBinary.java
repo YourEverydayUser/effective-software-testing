@@ -2,6 +2,8 @@ package zest;
 
 public class AddBinary {
 
+    private static final int UPPER_BOUND = 10000;
+
     /**
      * Adds two binary strings and returns the result as a binary string.
      *
@@ -13,6 +15,14 @@ public class AddBinary {
     public static String addBinary(String a, String b) {
         if (a == null || b == null) {
             throw new IllegalArgumentException("Input strings cannot be null");
+        }
+
+        if (a.isEmpty() || b.isEmpty()) {
+            throw new IllegalArgumentException("Both input strings should not be empty");
+        }
+
+        if (a.length() > UPPER_BOUND || b.length() > UPPER_BOUND) {
+            throw new IllegalArgumentException(String.format("Both input strings should be smaller then %s", UPPER_BOUND));
         }
 
         StringBuilder result = new StringBuilder();
