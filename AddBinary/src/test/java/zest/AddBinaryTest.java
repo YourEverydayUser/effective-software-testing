@@ -26,6 +26,13 @@ public class AddBinaryTest {
     }
 
     @Test
+    public void testWithNumbersStartingWithZero() {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            AddBinary.addBinary("0011", "011");
+        });
+    }
+
+    @Test
     public void testWithBiggerThenUpperBoundBinaryNumber() {
         var number = getPaddedBinaryNumber(10001);
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
@@ -55,13 +62,13 @@ public class AddBinaryTest {
 
     @Test
     public void testWithEqualLengthStringsAndCarryOver() {
-        var result = AddBinary.addBinary("1101", "0011");
+        var result = AddBinary.addBinary("1101", "11");
         AssertEquals("10000", result);
     }
 
     @Test
     public void testWithEqualLengthStringsWithoutCarryOver() {
-        var result = AddBinary.addBinary("1001", "0011");
+        var result = AddBinary.addBinary("1001", "11");
         AssertEquals("1100", result);
     }
 

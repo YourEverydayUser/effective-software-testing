@@ -1,8 +1,11 @@
 package zest;
 
+import java.util.regex.Pattern;
+
 public class AddBinary {
 
-    private static final int UPPER_BOUND = 10000;
+    private static final Pattern VALID_BINARY_NUMBER =
+            Pattern.compile("0$|^1[01]{0,9999}");
 
     /**
      * Adds two binary strings and returns the result as a binary string.
@@ -17,12 +20,9 @@ public class AddBinary {
             throw new IllegalArgumentException("Input strings cannot be null");
         }
 
-        if (a.isEmpty() || b.isEmpty()) {
-            throw new IllegalArgumentException("Both input strings should not be empty");
-        }
-
-        if (a.length() > UPPER_BOUND || b.length() > UPPER_BOUND) {
-            throw new IllegalArgumentException(String.format("Both input strings should be smaller then %s", UPPER_BOUND));
+        if (!VALID_BINARY_NUMBER.matcher(a).matches() || !VALID_BINARY_NUMBER.matcher(b).matches()) {
+            throw new IllegalArgumentException("Input numbers are not valid. They should match the following " +
+                    "pattern: 0$|^1[0|1]{1,10000}");
         }
 
         StringBuilder result = new StringBuilder();
@@ -48,6 +48,7 @@ public class AddBinary {
             carry = sum / 2;
         }
 
+        if (carry == 1) result.append('1');
         return result.reverse().toString();
     }
 
