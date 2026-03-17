@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 public class CompareVersionNumbers {
 
     private static final Pattern VALID_VERSION_NUMBER =
-            Pattern.compile("^\\d+(\\.\\d+)*$");
+            Pattern.compile("^\\d+(\\.\\d+){0,500}$");
 
     /**
      * Compares two version strings.
@@ -32,10 +32,13 @@ public class CompareVersionNumbers {
         String[] v1Parts = version1.split("\\.");
         String[] v2Parts = version2.split("\\.");
 
-        int maxLength = Math.max(v1Parts.length, v2Parts.length);
+        if (v1Parts.length > v2Parts.length) {
+            return 1;
+        } else if (v1Parts.length < v2Parts.length) {
+            return -1;
+        }
 
-        for (int i = 0; i < maxLength; i++) {
-
+        for (int i = v1Parts.length - 1; i >= 0; i--) {
             int num1 = (i < v1Parts.length) ? parseRevision(v1Parts[i]) : 0;
             int num2 = (i < v2Parts.length) ? parseRevision(v2Parts[i]) : 0;
 
