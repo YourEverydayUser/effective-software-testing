@@ -1,6 +1,4 @@
-# Solution for the Sort Colors
-
-The documentation of the decisions and steps taken for testing the Best Time to buy and sell stock solution.
+# Solution for the Best time to buy and sell stock exercise
 
 ## 1. Specification-based testing
 ### 1. Understand the requirement, inputs, and outputs
@@ -23,10 +21,3 @@ Entries of input array: integer, min 0, max 10^4
 Null, Empty array, Array with 1 element, Array larger than allowed
 negative entries, values too big, ascending values array, descending values array, 
 test with two maxima
-
-### 6. Automate the test cases
-### 7. Augment the test suite with creativity and experience
-
-## 2. Structural testing
-
-## 3. Mutation testing
