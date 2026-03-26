@@ -48,4 +48,38 @@ public class ReverseIntegerTest {
         assertThat(test).isEqualTo(0);
     }
 
+    @Test
+    public void testUnderflowCase() {
+        int test = -2147483646;
+        test = ReverseInteger.reverse(test);
+        assertThat(test).isEqualTo(0);
+    }
+
+    @Test
+    public void testEndingZeroes() {
+        int test = 10000;
+        test = ReverseInteger.reverse(test);
+        assertThat(test).isEqualTo(1);
+    }
+
+    @Test
+    public void testMinCase() {
+        int test = -2147483647;
+        test = ReverseInteger.reverse(test);
+        assertThat(test).isEqualTo(0);
+    }
+
+    @Test
+    public void testMaxCase() {
+        int test = 2147483647;
+        test = ReverseInteger.reverse(test);
+        assertThat(test).isEqualTo(0);
+    }
+
+    @Test
+    public void testLargerCase() {
+        int test = 1111111118;
+        test = ReverseInteger.reverse(test);
+        assertThat(test).isEqualTo(0);
+    }
 }

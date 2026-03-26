@@ -12,6 +12,8 @@ The program should not create an additional array for sorting and sort in-place.
 The program must be able to handle edge cases such as edge cases.
 
 ### 2. Explore the program
+Sorts the array in-place, so no new array is created. As there are only three possible colors/entries, it has boundaries,
+for 0 and 2 it swaps the entry to the upper/lower bound, and then adjusts the boundary for the following entries.
 
 ### 3. Judiciously explore the possible inputs and outputs, and identify the partitions.
 Inputs: array containing only 0, 1, and 2
@@ -26,8 +28,17 @@ Null, Empty array, Array of length 1, Array of length 2
 Entries all 0, Entries already sorted ({0,1,2}), Entry a 3
 
 ### 6. Automate the test cases
+
+Testing with an empty array (length 0) doesn't throw an exception, comparable to how a null array is handled.
+However as it is sorted in place the result is an empty array.
+
+It also isn't tested if an entry of the array is 3 or higher.
+
 ### 7. Augment the test suite with creativity and experience
+Added test with 2 out of 3 possible colors/numbers and an alternating colors test, the tests passed.
 
 ## 2. Structural testing
+Running the coverage testing tool, it shows that all lines and branches are already covered.
 
 ## 3. Mutation testing
+PITest shows that all 10 generated mutations were killed.

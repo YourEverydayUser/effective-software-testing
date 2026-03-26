@@ -9,6 +9,9 @@ Takes an array as input, which entries are single digit entries. Then adds 1 to 
 the 1 gets carried to the entry before. Can add to the length of the array.
 
 ### 2. Explore the program
+The program takes an array and adds 1 to the last entry, execpt if the last entry is a 9.
+In that case the last entry is replaced by a 0, and the one added to the entry before.
+If all entries are nines, a new array is created.
 ### 3. Judiciously explore the possible inputs and outputs, and identify the partitions.
 Inputs: Array of integers, length of array: 1-100, entries: integers 0-9
 Outputs: Array of integers, length 1-101, entries: integers 0-9
@@ -32,5 +35,13 @@ Testing for leading zeroes reveals that the program also works for arrays with l
 Here one would need more information if this is wanted or if an exception should be thrown, since the Requirements are unclear for this case.
 
 ## 2. Structural testing
+Running the coverage testing tool, it shows that all lines and branches are already covered.
 
 ## 3. Mutation testing
+> Line Coverage (for mutated classes only): 10/11 (91%)
+> 2 tests examined
+> Generated 11 mutations Killed 11 (100%)
+> Mutations with no coverage 0. Test strength 100%
+> Ran 16 tests (1.45 tests per mutation)
+ 
+All mutants were killed. So nothing more to do here.

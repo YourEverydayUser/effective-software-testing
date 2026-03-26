@@ -45,4 +45,27 @@ public class ValidPerfectSquareTest {
         assertThat(result).isEqualTo(true);
     }
 
+    @Test
+    public void testMaxCase(){
+        int test = Integer.MAX_VALUE;
+        boolean result = ValidPerfectSquare.isPerfectSquare(test);
+        assertThat(result).isEqualTo(false);
+    }
+
+    @Test
+    public void testBigFalseCase(){
+        int test = 65 * 65 + 1;
+        boolean result = ValidPerfectSquare.isPerfectSquare(test);
+        assertThat(result).isEqualTo(false);
+    }
+
+    @Test
+    public void testBigTrueCase(){
+        int test = 65 * 65;
+        boolean result = ValidPerfectSquare.isPerfectSquare(test);
+        assertThat(result).isEqualTo(true);
+    }
+
+
+
 }
