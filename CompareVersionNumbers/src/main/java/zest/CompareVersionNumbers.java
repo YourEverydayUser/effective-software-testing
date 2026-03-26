@@ -1,6 +1,11 @@
 package zest;
 
+import java.util.regex.Pattern;
+
 public class CompareVersionNumbers {
+
+    private static final Pattern VALID_VERSION_NUMBER =
+            Pattern.compile("^\\d+(\\.\\d+){0,500}$");
 
     /**
      * Compares two version strings.
@@ -17,15 +22,25 @@ public class CompareVersionNumbers {
             throw new IllegalArgumentException("Version strings cannot be null");
         }
 
+        if (!VALID_VERSION_NUMBER.matcher(version1).matches() ||
+            !VALID_VERSION_NUMBER.matcher(version2).matches())
+        {
+            throw new IllegalArgumentException(String.format("One of the two version numbers 1: %s, 2: %s " +
+                    "does not match the required form given by the pattern: ^\\d+(\\.\\d+)*$", version1, version2));
+        }
+
         String[] v1Parts = version1.split("\\.");
         String[] v2Parts = version2.split("\\.");
 
-        int maxLength = Math.max(v1Parts.length, v2Parts.length);
+        if (v1Parts.length > v2Parts.length) {
+            return 1;
+        } else if (v1Parts.length < v2Parts.length) {
+            return -1;
+        }
 
-        for (int i = 0; i < maxLength; i++) {
-
-            int num1 = (i < v1Parts.length) ? Integer.parseInt(v1Parts[i]) : 0;
-            int num2 = (i < v2Parts.length) ? Integer.parseInt(v2Parts[i]) : 0;
+        for (int i = v1Parts.length - 1; i >= 0; i--) {
+            int num1 = (i < v1Parts.length) ? parseRevision(v1Parts[i]) : 0;
+            int num2 = (i < v2Parts.length) ? parseRevision(v2Parts[i]) : 0;
 
             if (num1 > num2) {
                 return -1;
@@ -37,4 +52,12 @@ public class CompareVersionNumbers {
         return 0;
     }
 
+    private static int parseRevision(String revision) {
+        try {
+            return Integer.parseInt(revision);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(
+                    String.format("Revision is not a valid 32-bit signed integer: %s", revision), e);
+        }
+    }
 }
