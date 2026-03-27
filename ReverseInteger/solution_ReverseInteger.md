@@ -9,7 +9,7 @@ Takes an integer number and reverses the order of the digits of that number
 
 ### 2. Explore the program
 It creates a new integer. It then gets the last digit of the input number via modulo10 operation.
-It adds the last digit to the new integer and multplies the new by 10 before adding the new last digit.
+It adds the last digit to the new integer and multiplies the new by 10 before adding the new last digit.
 
 ### 3. Judiciously explore the possible inputs and outputs, and identify the partitions.
 Input: A signed 32-bit integer x
