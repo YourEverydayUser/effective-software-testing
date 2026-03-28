@@ -5,8 +5,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.platform.commons.logging.Logger;
 import org.junit.platform.commons.logging.LoggerFactory;
 
-import java.util.function.Supplier;
-
 public class CompareVersionNumbersTest {
 
     private static final Logger logger = LoggerFactory.getLogger(CompareVersionNumbersTest.class);
@@ -79,13 +77,25 @@ public class CompareVersionNumbersTest {
     @Test
     public void testDifferentLengthNumbers() {
         var value = CompareVersionNumbers.compareVersion("1.0.1", "2.0");
-        AssertEquals(1, value);
+        AssertEquals(-1, value);
     }
 
     @Test
     public void testDifferentLengthNumbers2() {
         var value = CompareVersionNumbers.compareVersion("1.0", "2.0.1");
         AssertEquals(-1, value);
+    }
+
+    @Test
+    public void testDifferentLengthTriggersMissingPartOnVersion1() {
+        var value = CompareVersionNumbers.compareVersion("1.0", "1.0.1");
+        AssertEquals(-1, value);
+    }
+
+    @Test
+    public void testDifferentLengthTriggersMissingPartOnVersion2() {
+        var value = CompareVersionNumbers.compareVersion("1.0.1", "1.0");
+        AssertEquals(1, value);
     }
 
     @Test

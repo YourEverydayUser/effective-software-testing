@@ -26,25 +26,21 @@ public class CompareVersionNumbers {
             !VALID_VERSION_NUMBER.matcher(version2).matches())
         {
             throw new IllegalArgumentException(String.format("One of the two version numbers 1: %s, 2: %s " +
-                    "does not match the required form given by the pattern: ^\\d+(\\.\\d+)*$", version1, version2));
+                    "does not match the required form given by the pattern: ^\\\\d+(\\\\.\\\\d+){0,500}$", version1, version2));
         }
 
         String[] v1Parts = version1.split("\\.");
         String[] v2Parts = version2.split("\\.");
 
-        if (v1Parts.length > v2Parts.length) {
-            return 1;
-        } else if (v1Parts.length < v2Parts.length) {
-            return -1;
-        }
+        int maxLength = Math.max(v1Parts.length, v2Parts.length);
 
-        for (int i = v1Parts.length - 1; i >= 0; i--) {
-            int num1 = parseRevision(v1Parts[i]);
-            int num2 = parseRevision(v2Parts[i]);
+        for (int i = 0; i < maxLength; i++) {
+            int num1 = (i < v1Parts.length) ? parseRevision(v1Parts[i]) : 0;
+            int num2 = (i < v2Parts.length) ? parseRevision(v2Parts[i]) : 0;
 
-            if (num1 > num2) {
+            if (num1 < num2) {
                 return -1;
-            } else if (num1 < num2) {
+            } else if (num1 > num2) {
                 return 1;
             }
         }
