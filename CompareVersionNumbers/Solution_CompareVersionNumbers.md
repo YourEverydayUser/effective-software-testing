@@ -31,8 +31,15 @@ maximum allowed number of revisions vs too many revisions, and largest valid int
 Null input, empty string, invalid version format, version with too many revisions, revision value too large,
 equal versions, version1 greater than version2, versions of different length, and versions with leading zeros.
 
-## 6. Mutation Testing
-No new insights from mutation testing.
+### 6. Automate the test cases
+Done based on the previous findings
 
-## 7. Coverage Result
+### 7. Augment the test suite with creativity and experience
+To avoid cluttering the method with input validation I added a regex to make
+sure that the provided inputs are valid.
+
+## 2. Structural Testing
 ![img.png](coverage-result.png)
+
+## 3. Mutation Testing
+No new insights from mutation testing.

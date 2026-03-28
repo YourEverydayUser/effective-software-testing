@@ -26,8 +26,15 @@ and small valid titles such as A and larger valid titles such as ZZZ.
 Null input, empty string, invalid titles containing digits or lowercase letters, single-letter titles 
 such as A, multi-letter titles such as AB and ZY, and larger valid titles such as ZZZ.
 
-## 6. Mutation Testing
-No new insights from mutation testing.
+### 6. Automate the test cases
+Done based on the previous findings
 
-## 7. Coverage Result
+### 7. Augment the test suite with creativity and experience
+To avoid cluttering the method with input validation I added a regex to make
+sure that the provided inputs are valid.
+
+## 2. Structural Testing
 ![img.png](coverage-result.png)
+
+## 3. Mutation Testing
+No new insights from mutation testing.

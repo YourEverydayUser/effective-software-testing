@@ -90,7 +90,7 @@
                     </dependency>
                 </dependencies>
                 <configuration>
-                    <timeoutFactor>3</timeoutFactor>
+                    <timeoutFactor>1</timeoutFactor>
                     <outputFormats>
                         <outputFormat>HTML</outputFormat>
                         <outputFormat>XML</outputFormat>

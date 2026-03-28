@@ -24,11 +24,18 @@ Null, Empty array, Array with 1 element, Array larger than allowed
 negative entries, values too big, ascending values array, descending values array, 
 test with two maxima
 
-## 6. Mutation Testing
+### 6. Automate the test cases
+Done based on the previous findings
+
+### 7. Augment the test suite with creativity and experience
+To avoid cluttering the method with input validation I added a regex to make
+sure that the provided inputs are valid.
+
+## 2. Structural Testing
+![img.png](coverage-result.png)
+
+## 3. Mutation Testing
 During the mutation testing a problem appeared:
 - The initial test cases didn't distinguish between > and >= because the tests
 were performed with MAX_LENGTH + 1. So I adjust the tests accordingly to also cover that
 boundary value.
-
-## 7. Coverage Result
-![img.png](coverage-result.png)
