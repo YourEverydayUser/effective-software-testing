@@ -16,12 +16,19 @@ public class AddBinaryTest {
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
             AddBinary.addBinary(null, null);
         });
+
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            AddBinary.addBinary("", null);
+        });
     }
 
     @Test
     public void testWithOneZeroLengthInput() {
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
             AddBinary.addBinary("", "");
+        });
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            AddBinary.addBinary("1", "");
         });
     }
 

@@ -9,6 +9,8 @@ the highest possible profit, by buying it at day x and selling it at day x + y. 
 to note that the program should not get stuck in local maxima. 
 
 ### 2. Explore the program
+The program didn't contain checks for the constraints mentioned in the 
+README, so those were added.
 
 ### 3. Judiciously explore the possible inputs and outputs, and identify the partitions.
 Inputs: array containing values between 0 and 10^4
@@ -21,3 +23,12 @@ Entries of input array: integer, min 0, max 10^4
 Null, Empty array, Array with 1 element, Array larger than allowed
 negative entries, values too big, ascending values array, descending values array, 
 test with two maxima
+
+## 6. Mutation Testing
+During the mutation testing a problem appeared:
+- The initial test cases didn't distinguish between > and >= because the tests
+were performed with MAX_LENGTH + 1. So I adjust the tests accordingly to also cover that
+boundary value.
+
+## 7. Coverage Result
+![img.png](coverage-result.png)

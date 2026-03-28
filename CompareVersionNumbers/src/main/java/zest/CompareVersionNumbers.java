@@ -39,8 +39,8 @@ public class CompareVersionNumbers {
         }
 
         for (int i = v1Parts.length - 1; i >= 0; i--) {
-            int num1 = (i < v1Parts.length) ? parseRevision(v1Parts[i]) : 0;
-            int num2 = (i < v2Parts.length) ? parseRevision(v2Parts[i]) : 0;
+            int num1 = parseRevision(v1Parts[i]);
+            int num2 = parseRevision(v2Parts[i]);
 
             if (num1 > num2) {
                 return -1;

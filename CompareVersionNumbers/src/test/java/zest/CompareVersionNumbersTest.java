@@ -17,12 +17,18 @@ public class CompareVersionNumbersTest {
         assertThrows(IllegalArgumentException.class, () -> {
             CompareVersionNumbers.compareVersion(null, "3.0.1");
         });
+        assertThrows(IllegalArgumentException.class, () -> {
+            CompareVersionNumbers.compareVersion("3.0.1", null);
+        });
     }
 
     @Test
     public void testWithInvalidVersionNumber() {
         assertThrows(IllegalArgumentException.class, () -> {
             CompareVersionNumbers.compareVersion("00,1", "1.0");
+        });
+        assertThrows(IllegalArgumentException.class, () -> {
+            CompareVersionNumbers.compareVersion("1.0",  "00,1");
         });
     }
 
@@ -59,6 +65,12 @@ public class CompareVersionNumbersTest {
     }
 
     @Test
+    public void testVersionNumber2IsBigger() {
+        var value = CompareVersionNumbers.compareVersion("1.9.2", "2.1.0");
+        AssertEquals(-1, value);
+    }
+
+    @Test
     public void testEqualVersionNumbers() {
         var value = CompareVersionNumbers.compareVersion("1.1", "1.1");
         AssertEquals(0, value);
@@ -71,16 +83,15 @@ public class CompareVersionNumbersTest {
     }
 
     @Test
+    public void testDifferentLengthNumbers2() {
+        var value = CompareVersionNumbers.compareVersion("1.0", "2.0.1");
+        AssertEquals(-1, value);
+    }
+
+    @Test
     public void testVersionsWithLeadingZeros() {
         var value = CompareVersionNumbers.compareVersion("001.10.1", "1.10.1");
         AssertEquals(0, value);
-    }
-
-
-
-    private static void AssertTrue(Supplier<Boolean> condition, Object result) {
-        Assertions.assertTrue(condition.get());
-        logger.info(() -> "Test successful, got " + result.toString());
     }
 
     private static void AssertEquals(Object a, Object b) {

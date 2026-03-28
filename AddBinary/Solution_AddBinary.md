@@ -5,6 +5,8 @@
 The program takes two strings as input. These strings represent binary numbers. The method should return their sum as a 
 binary string. Valid inputs may only contain 0 and 1, must not be null, must have length between 1 and 10000, and may not
 contain leading zeros unless the number is exactly "0". Invalid inputs should cause an IllegalArgumentException.
+According to the specification pre-conditions were added to make sure that the method operates on valid 
+inputs.
 
 ## 2. Explore the program
 After making sure that the passed input strings are not null, we are using a Regular Expression to validate the input strings
@@ -28,3 +30,12 @@ Arithmetic boundaries: no carry, carry in the middle, and final carry producing 
 Null input, empty strings, strings with leading zeros, strings larger than allowed, valid strings on the upper bound, 
 "0" + "0", one-digit inputs, equal and unequal length inputs, addition with carry, addition without carry, 
 and addition where the final carry creates a new leading bit.
+
+## 6. Line Coverage Result
+![img.png](coverage-result.png)
+
+## 7. Mutation Testing
+During the mutation tests the following problem appeared: 
+- When i or j are negative the while condition loops infinitely, however after closer inspection, 
+it is clear that this situation can't occur (thanks to the input validation) and is just
+occurring because of the mutation test creating a pathological code path

@@ -27,6 +27,13 @@ public class BestTimeToBuyAndSellStockTest {
     }
 
     @Test
+    public void testWithArrayLengthOnBoundary() {
+        var profit = BestTimeToBuyAndSellStock.maxProfit(new int[
+                BestTimeToBuyAndSellStock.UPPER_LIMIT_LENGTH]);
+        AssertEquals(0, profit);
+    }
+
+    @Test
     public void testWithArrayTooLarge() {
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
             BestTimeToBuyAndSellStock.maxProfit(new int[
@@ -57,8 +64,8 @@ public class BestTimeToBuyAndSellStockTest {
 
     @Test
     public void testWithAscendingValuesArray() {
-        var profit = BestTimeToBuyAndSellStock.maxProfit(getArrayOf(1, 2, 3, 4, 5));
-        AssertEquals(4, profit);
+        var profit = BestTimeToBuyAndSellStock.maxProfit(getArrayOf(1, 2, 3, 4, 5, 10000));
+        AssertEquals(9999, profit);
     }
 
     @Test

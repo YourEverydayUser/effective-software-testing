@@ -18,4 +18,5 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <junit.jupiter.version>5.10.0</junit.jupiter.version>
     </properties>
+
 </project>
