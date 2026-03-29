@@ -11,8 +11,8 @@ public class LengthOfLastWord {
      * @throws IllegalArgumentException if s is null
      */
     public static int lengthOfLastWord(String s) {
-        if (s == null || s.isEmpty()) {
-            throw new IllegalArgumentException("Input string cannot be null or empty");
+        if (s == null) {
+            throw new IllegalArgumentException("Input string cannot be null");
         }
 
         int length = 0;

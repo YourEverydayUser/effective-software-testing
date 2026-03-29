@@ -12,8 +12,8 @@ public class FindFirstOccurrence {
      * @throws IllegalArgumentException if haystack or needle is null
      */
     public static int strStr(String haystack, String needle) {
-        if (haystack == null || needle == null || haystack.isEmpty() || needle.isEmpty()) {
-            throw new IllegalArgumentException("Input strings cannot be null or empty");
+        if (haystack == null || needle == null) {
+            throw new IllegalArgumentException("Input strings cannot be null");
         }
 
         int hLen = haystack.length();

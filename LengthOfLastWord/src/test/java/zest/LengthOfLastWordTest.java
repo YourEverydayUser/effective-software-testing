@@ -1,73 +1,59 @@
 package zest;
-
 import org.junit.jupiter.api.Test;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class LengthOfLastWordTest {
-
     @Test
-    public void testNullCase(){
-        String s = null;
-        assertThatThrownBy(() -> {
-            LengthOfLastWord.lengthOfLastWord(s);
-        })
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("Input string cannot be null or empty");
+    void oneWord () {
+        int result =LengthOfLastWord.lengthOfLastWord("Hello");
+        assertEquals(5, result);
+    }
+    @Test
+    void multipleWords() {
+        int result = LengthOfLastWord.lengthOfLastWord("Hello World World");
+        assertEquals(5, result);
     }
 
     @Test
-    public void testEmptyCase(){
-        String s = "";
-        assertThatThrownBy(() -> {
-            LengthOfLastWord.lengthOfLastWord(s);
-        })
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("Input string cannot be null or empty");
+    void spacesInTheEnd() {
+        int result = LengthOfLastWord.lengthOfLastWord("Hello World        ");
+        assertEquals(5, result);
     }
 
     @Test
-    public void testOneLetter() {
-        String s = "f";
-        int result = LengthOfLastWord.lengthOfLastWord(s);
-        assertThat(result).isEqualTo(1);
+    void spacesInTheBeginning() {
+        int result = LengthOfLastWord.lengthOfLastWord("      Hello");
+        assertEquals(5, result);
     }
 
     @Test
-    public void testLongString() {
-        String s = "c";
-        s = s.repeat(10000);
-        int result = LengthOfLastWord.lengthOfLastWord(s);
-        assertThat(result).isEqualTo(10000);
+    void multipleSpacesInBetween() {
+        int result = LengthOfLastWord.lengthOfLastWord("Hello         World");
+        assertEquals(5, result);
     }
 
     @Test
-    public void testMultipleSpaces() {
-        String s = "  f ";
-        int result = LengthOfLastWord.lengthOfLastWord(s);
-        assertThat(result).isEqualTo(1);
+    void emptyString() {
+        int result = LengthOfLastWord.lengthOfLastWord("");
+        assertEquals(0, result);
     }
 
     @Test
-    public void testTrailingSpaces() {
-        String s = "f  ";
-        int result = LengthOfLastWord.lengthOfLastWord(s);
-        assertThat(result).isEqualTo(1);
+    void onlySpaces() {
+        int result = LengthOfLastWord.lengthOfLastWord("       ");
+        assertEquals(0, result);
     }
 
     @Test
-    public void testMultipleWords() {
-        String s = "Dies   ist ein TesT";
-        int result = LengthOfLastWord.lengthOfLastWord(s);
-        assertThat(result).isEqualTo(4);
+    void singleCharacter() {
+        int result = LengthOfLastWord.lengthOfLastWord("H");
+        assertEquals(1, result);
     }
 
     @Test
-    public void testSpaces() {
-        String s = "  ";
-        int result = LengthOfLastWord.lengthOfLastWord(s);
-        assertThat(result).isEqualTo(0);
+    void nullString() {
+        assertThrows(IllegalArgumentException.class, () ->
+        LengthOfLastWord.lengthOfLastWord(null)
+        );
     }
-
 }

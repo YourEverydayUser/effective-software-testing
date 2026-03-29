@@ -1,90 +1,74 @@
 package zest;
-
 import org.junit.jupiter.api.Test;
-
-import java.util.Arrays;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class LongestCommonPrefixTest {
 
     @Test
-    public void testNullCase(){
-        String[] s = null;
-        assertThatThrownBy(() -> {
-            LongestCommonPrefix.longestCommonPrefix(s);
-        })
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("Input array cannot be null");
+    void commonPrefixExists() {
+        String result = LongestCommonPrefix.longestCommonPrefix(new String[]{"brother", "bread", "breast"});
+        assertEquals("br", result);
     }
 
     @Test
-    public void testEmptyCase(){
-        String[] s = {};
-        String result = LongestCommonPrefix.longestCommonPrefix(s);
-        assertThat(result).isEqualTo("");
+    void allStringsIdentical() {
+        String result = LongestCommonPrefix.longestCommonPrefix(new String[]{"bro", "bro", "bro", "bro"});
+        assertEquals("bro", result);
     }
 
     @Test
-    public void testEmptyEntryCase(){
-        String[] s = {""};
-        String result = LongestCommonPrefix.longestCommonPrefix(s);
-        assertThat(result).isEqualTo("");
+    void entireFirstWordIsPrefix() {
+        String result = LongestCommonPrefix.longestCommonPrefix(new String[]{"bro", "brother", "brotherhood"});
+        assertEquals("bro", result);
     }
 
     @Test
-    public void testOneEntryCase(){
-        String[] s = {"Hello"};
-        String result = LongestCommonPrefix.longestCommonPrefix(s);
-        assertThat(result).isEqualTo("Hello");
+    void noCommonPrefix() {
+        String result = LongestCommonPrefix.longestCommonPrefix(new String[]{"brother", "sister", "father"});
+        assertEquals("", result);
     }
 
     @Test
-    public void testTwoEntriesCase(){
-        String[] s = {"HelloWorld", "HellWorld"};
-        String result = LongestCommonPrefix.longestCommonPrefix(s);
-        assertThat(result).isEqualTo("Hell");
+    void emptyArray() {
+        String result = LongestCommonPrefix.longestCommonPrefix(new String[]{});
+        assertEquals("", result);
     }
 
     @Test
-    public void testOneLetterStringCase(){
-        String[] s = {"HelloWorld", "H"};
-        String result = LongestCommonPrefix.longestCommonPrefix(s);
-        assertThat(result).isEqualTo("H");
+    void singleStringInArray() {
+        String result = LongestCommonPrefix.longestCommonPrefix(new String[]{"brother"});
+        assertEquals("brother", result);
     }
 
     @Test
-    public void testTwoHundredEntriesCase(){
-        String[] s = new String[200];
-        Arrays.fill(s, "Hello");
-        String result = LongestCommonPrefix.longestCommonPrefix(s);
-        assertThat(result).isEqualTo("Hello");
+    void oneStringIsEmpty() {
+        String result = LongestCommonPrefix.longestCommonPrefix(new String[]{"brother", ""});
+        assertEquals("", result);
     }
 
     @Test
-    public void testTwoHundredEntriesDiffCase(){
-        String[] s = new String[200];
-        Arrays.fill(s, "Hello");
-        s[90] = "UT";
-        String result = LongestCommonPrefix.longestCommonPrefix(s);
-        assertThat(result).isEqualTo("");
+    void singleCharacterPrefix() {
+        String result = LongestCommonPrefix.longestCommonPrefix(new String[]{"ab", "ad", "abc"});
+        assertEquals("a", result);
     }
 
     @Test
-    public void testLongEntriesCase(){
-        String[] s = new String[200];
-        Arrays.fill(s, "aaHello");
-        String a = "a";
-        a = a.repeat(200);
-        s[99] = a;
-        String result = LongestCommonPrefix.longestCommonPrefix(s);
-        assertThat(result).isEqualTo("aa");
+    void firstStringIsLongest() {
+        String result = LongestCommonPrefix.longestCommonPrefix(new String[]{"greatest", "grade", "grok"});
+        assertEquals("gr", result);
     }
 
+    @Test
+    void nullArray() {
+        assertThrows(IllegalArgumentException.class, () ->
+                LongestCommonPrefix.longestCommonPrefix(null)
+        );
+    }
 
-
-
-
+    @Test
+    void differentSingleCharacters() {
+        String result = LongestCommonPrefix.longestCommonPrefix(new String[]{"a", "b"});
+        assertEquals("", result);
+    }
 
 }

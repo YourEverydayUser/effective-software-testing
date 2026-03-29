@@ -1,139 +1,73 @@
 package zest;
-
 import org.junit.jupiter.api.Test;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class FindFirstOccurrenceTest {
-
-
     @Test
-    public void testBothNull() {
-        String first = null;
-        String second = null;
-        assertThatThrownBy(() -> {
-            FindFirstOccurrence.strStr(first, second);
-        })
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("Input strings cannot be null or empty");
+    void foundAtStart() {
+        int result = FindFirstOccurrence.strStr("sadbutsad", "sad");
+        assertEquals(0, result);
     }
 
     @Test
-    public void testFirstNull() {
-        String first = null;
-        String second = "abc";
-        assertThatThrownBy(() -> {
-            FindFirstOccurrence.strStr(first, second);
-        })
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("Input strings cannot be null or empty");
+    void foundAtMiddle() {
+        int result = FindFirstOccurrence.strStr("sadbutsad", "but");
+        assertEquals(3, result);
     }
 
     @Test
-    public void testSecondNull() {
-        String first = "avd";
-        String second = null;
-        assertThatThrownBy(() -> {
-            FindFirstOccurrence.strStr(first, second);
-        })
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("Input strings cannot be null");
+    void foundAtEnd() {
+        int result = FindFirstOccurrence.strStr("sadbutasd", "asd");
+        assertEquals(6, result);
     }
 
     @Test
-    public void testBothEmpty() {
-        String first = "";
-        String second = "";
-        assertThatThrownBy(() -> {
-            FindFirstOccurrence.strStr(first, second);
-        })
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("Input strings cannot be null or empty");
-    }
-
-
-    @Test
-    public void testFirstEmpty() {
-        String first = "";
-        String second = "abc";
-        assertThatThrownBy(() -> {
-            FindFirstOccurrence.strStr(first, second);
-        })
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("Input strings cannot be null or empty");
+    void notFoundAtAll() {
+        int result = FindFirstOccurrence.strStr("sadbutsad", "happy");
+        assertEquals(-1, result);
     }
 
     @Test
-    public void testSecondEmpty() {
-        String first = "avd";
-        String second = "";
-        assertThatThrownBy(() -> {
-            FindFirstOccurrence.strStr(first, second);
-        })
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("Input strings cannot be null");
+    void singleCharMatch() {
+        int result = FindFirstOccurrence.strStr("s", "s");
+        assertEquals(0, result);
     }
 
     @Test
-    public void testBothOneTrue() {
-        String first = "a";
-        String second = "a";
-        int result = FindFirstOccurrence.strStr(first, second);
-        assertThat(result).isEqualTo(0);
+    void singleCharNoMatch() {
+        int result = FindFirstOccurrence.strStr("s", "a");
+        assertEquals(-1, result);
     }
 
     @Test
-    public void testBothOneFalse() {
-        String first = "a";
-        String second = "f";
-        int result = FindFirstOccurrence.strStr(first, second);
-        assertThat(result).isEqualTo(-1);
+    void MatchAtLastLoopItteration() {
+        int result = FindFirstOccurrence.strStr("sad", "d");
+        assertEquals(2, result);
     }
 
     @Test
-    public void testLongFalse() {
-        String first = "c";
-        first = first.repeat(10000);
-        String second = "f";
-        int result = FindFirstOccurrence.strStr(first, second);
-        assertThat(result).isEqualTo(-1);
+    void partialMatch() {
+        int result = FindFirstOccurrence.strStr("sad", "ab");
+        assertEquals(-1, result);
     }
 
     @Test
-    public void testLongTrue() {
-        String first = "c";
-        first = first.repeat(10000);
-        String second = first;
-        int result = FindFirstOccurrence.strStr(first, second);
-        assertThat(result).isEqualTo(0);
+    void nullHaystack() {
+        assertThrows(IllegalArgumentException.class, () ->
+                FindFirstOccurrence.strStr(null, "sad")
+        );
     }
 
     @Test
-    public void testLongShortTrue() {
-        String first = "c";
-        first = first.repeat(9999);
-        first = first + "g";
-        String second = "g";
-        int result = FindFirstOccurrence.strStr(first, second);
-        assertThat(result).isEqualTo(9999);
+    void nullNeedle() {
+        assertThrows(IllegalArgumentException.class, () ->
+                FindFirstOccurrence.strStr("sadbutsad", null)
+                );
     }
 
     @Test
-    public void testNeedleLongerFalse() {
-        String first = "cdfg";
-        String second = "ferecdfgrhrtgh";
-        int result = FindFirstOccurrence.strStr(first, second);
-        assertThat(result).isEqualTo(-1);
+    void NeedleLongerThanHaystack() {
+        int result = FindFirstOccurrence.strStr("sad", "sadbutsad");
+        assertEquals(-1, result);
     }
-
-    @Test
-    public void testMultiple() {
-        String first = "ferecdfgrhrtghcdfg";
-        String second = "cdf";
-        int result = FindFirstOccurrence.strStr(first, second);
-        assertThat(result).isEqualTo(4);
-    }
-
-
 }
