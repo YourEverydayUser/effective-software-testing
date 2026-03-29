@@ -32,7 +32,9 @@ Null input, empty string, invalid version format, version with too many revision
 equal versions, version1 greater than version2, versions of different length, and versions with leading zeros.
 
 ### 6. Automate the test cases
-Done based on the previous findings
+Done based on the previous findings. During execution of the test cases it became clear
+that the version number comparison returned the wrong value. It returned -1 if version1
+is bigger than version2, instead of 1. So that was fixed to match the specification. 
 
 ### 7. Augment the test suite with creativity and experience
 To avoid cluttering the method with input validation I added a regex to make
