@@ -10,18 +10,8 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>AddBinary</module>
-        <module>BestTimeToBuyAndSellStock</module>
-        <module>CompareVersionNumbers</module>
-        <module>ExcelSheetColumnNumber</module>
-        <module>FindFirstOccurrence</module>
-        <module>LengthOfLastWord</module>
-        <module>LongestCommonPrefix</module>
-        <module>MoveZeroes</module>
-        <module>PlusOne</module>
-        <module>ReverseInteger</module>
-        <module>SortColors</module>
-        <module>ValidPerfectSquare</module>
+        <module>assignment1</module>
+        <module>assignment2</module>
     </modules>
 
     <properties>
