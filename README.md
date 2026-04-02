@@ -3,7 +3,7 @@ Each child-module then has child modules for the different exercises.
 
 To initially setup the maven project run targets clean and compile from the root directory:
 
-![img.png](maven-setup-configuration.png)
+<img alt="img.png" height="350" src="maven-setup-configuration.png" width="300"/>
 
 When trying to run the tests for the whole module, execute this command from the root directory (effective-software-testing):
 test jacoco:report pitest:mutationCoverage
