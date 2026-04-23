@@ -14,8 +14,11 @@ public class MinCostClimbingStairs {
         int[] dp = new int[n];
         dp[0] = cost[0];
         dp[1] = cost[1];
+        checkValue(0, cost[0]);
+        checkValue(1, cost[1]);
 
         for (int i = 2; i < n; i++) {
+            checkValue(i, cost[i]);
             dp[i] = cost[i] + Math.min(dp[i - 1], dp[i - 2]);
         }
 
@@ -31,12 +34,12 @@ public class MinCostClimbingStairs {
             throw new IllegalArgumentException(
                 "cost length must be in [" + MIN_LENGTH + ", " + MAX_LENGTH + "], got " + cost.length);
         }
+    }
 
-        for (int i = 0; i < cost.length; i++) {
-            if (cost[i] < MIN_VALUE || cost[i] > MAX_VALUE) {
-                throw new IllegalArgumentException(
-                    "cost[" + i + "] must be in [" + MIN_VALUE + ", " + MAX_VALUE + "], got " + cost[i]);
-            }
+    private void checkValue(int index, int value) {
+        if (value < MIN_VALUE || value > MAX_VALUE) {
+            throw new IllegalArgumentException(
+                    "cost[" + index + "] must be in [" + MIN_VALUE + ", " + MAX_VALUE + "], got " + value);
         }
     }
 }
