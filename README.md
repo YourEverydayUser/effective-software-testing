@@ -12,6 +12,6 @@ When trying to run a specific assignment or a specific exercise, execute the com
 directory. 
 
 To run a specific module add the -pl flag together with the module to build, e.g.:
-test jacoco:report pitest:mutationCoverage -pl AddBinary
+test jacoco:report pitest:mutationCoverage -pl assignment2/1-MinCostClimbingStairs
 
 <img alt="img.png" height="350" src="maven-run-configuration.png" width="300"/>
