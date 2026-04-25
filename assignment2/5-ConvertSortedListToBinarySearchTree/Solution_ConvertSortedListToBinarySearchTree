@@ -1,0 +1,40 @@
+## Testing
+### Task 1: Code Coverage
+
+Reached 100% in ConvertSortedListToBinarySearchTree Class, Methods, Line and Branch Coverage
+No bugs were found
+
+### Task 2: Designing Contracts
+
+Implemented  the constraint for length (max length is 2*10^4).
+
+Implemented the constraint for the values (between -10^5 and 10^5).
+
+### Task 3: Testing Contracts
+
+Tested the constraint for length (max length is 2* 10^4), so a test for length 2* 10^4 and one for 2* 10^4+1.
+
+Tested the constraint for the values with -100001, -100000, 100000, 100001.
+
+Tested that the SortedList is unchanged after running the method.
+
+### Task 4: Property-Based Testing
+
+- Use **property-based testing** techniques to derive tests for the provided Java solutions.
+- Identify properties that should hold true for any inputs and document your rationale.
+- Use a property-based testing framework to automate the testing process.
+- hint: Add jqwik framework to Your pom.xml
+
+### Task 5: Fuzz testing
+
+Check the respective Jupyter notebook, where the tasks defined will extend your understanding of Fuzz testing, and you will get a glimpse of different fuzzing strategies.
+
+## Grading Criteria
+
+Each assignment will be graded with either 0 (fail) or 1 (pass). For an assignment to receive a 1, it must:
+
+1. Provide clear evidence of effort.
+
+2. Provide a clear 'solution_[problem name].md'` file for each of 5 problems, plus clear solution documentation in the Jupyter notebook for exercice 06.
+
+3. Provide code that fulfils the requirements of the assignment or explains why this could not be achieved and what has been tried and how.
