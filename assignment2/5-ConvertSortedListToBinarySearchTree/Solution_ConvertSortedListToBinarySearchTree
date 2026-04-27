@@ -20,21 +20,7 @@ Tested that the SortedList is unchanged after running the method.
 
 ### Task 4: Property-Based Testing
 
-- Use **property-based testing** techniques to derive tests for the provided Java solutions.
-- Identify properties that should hold true for any inputs and document your rationale.
-- Use a property-based testing framework to automate the testing process.
-- hint: Add jqwik framework to Your pom.xml
+Tested for properties with values that are too small, in the range of -10^5 to 10^5 and too large
 
-### Task 5: Fuzz testing
+Tested for lists with lengths in range (max 2 * 10^4) and lists that are too long
 
-Check the respective Jupyter notebook, where the tasks defined will extend your understanding of Fuzz testing, and you will get a glimpse of different fuzzing strategies.
-
-## Grading Criteria
-
-Each assignment will be graded with either 0 (fail) or 1 (pass). For an assignment to receive a 1, it must:
-
-1. Provide clear evidence of effort.
-
-2. Provide a clear 'solution_[problem name].md'` file for each of 5 problems, plus clear solution documentation in the Jupyter notebook for exercice 06.
-
-3. Provide code that fulfils the requirements of the assignment or explains why this could not be achieved and what has been tried and how.
