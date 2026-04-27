@@ -19,4 +19,13 @@
         <junit.jupiter.version>5.10.2</junit.jupiter.version>
         <jacoco.version>0.8.7</jacoco.version>
     </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>net.jqwik</groupId>
+            <artifactId>jqwik</artifactId>
+            <version>1.7.3</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 </project>
